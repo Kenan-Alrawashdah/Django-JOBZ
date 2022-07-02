@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class WordConfig(AppConfig):
+class JopConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'word'
+    name = 'jop'
