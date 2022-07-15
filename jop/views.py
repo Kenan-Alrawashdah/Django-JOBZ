@@ -12,4 +12,4 @@ def jop_list(request):
 def jop_detail(request, id):
     jop_detail = Jop.objects.get(id = id)
     context = {'jop' : jop_detail}
-    return render(request, 'jop/jop_detail.html', context)
+    return render(request, 'jop/job_detail.html', context)
