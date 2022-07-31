@@ -1,0 +1,9 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <div class="m-auto w-50">
+    <h2>Logged out!</h2>
+    <p class="mt-4"><a href="{% url 'login'%}">Click here to login again.</a></p>
+  </div>
+
+{% endblock %}
