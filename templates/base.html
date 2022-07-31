@@ -83,16 +83,16 @@
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Job
 <span class="caret"></span></a>
 <ul class="dropdown-menu">
-<li><a href="job_category.html">Job List</a></li>
+<li><a href="{%url 'jops:jop_list' %}">Job List</a></li>
 <li><a href="job_detail.html">Job Detail</a></li>
 </ul>
 </li>
-<li><a href="blog_page.html"> Blog</a></li>
+<li><a href="{%url 'jops:jop_list' %}">Jobs</a></li>
 <li><a href="about_us.html">About</a></li>
 <li><a href="contact.html">Contact</a></li>
 </ul>
 <div class=" Post-Jobs">
-<a href="post_job.html" class="">
+<a href="{% url 'jops:jop_add' %}" class="">
 Post Jobs
 </a>
 </div>

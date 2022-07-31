@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% load static %}
+
+{% block body %}
+<section id="post_job">
+    <div class="vertical-space-100"></div>
+    <div class="vertical-space-101"></div>
+    <div class="container">
+    <div class="list-box">
+    <a href="#" class="font-color-black margin-right">Job </a> > <a href="#" class="font-color-orange margin-left"> Post job</a>
+    </div>
+    <a href="#" class="Save">Save</a>
+    <div class="vertical-space-60"></div>
+    <div class="job-post-box">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+        <button type="submit" class="btn Post-Job-Offer">Post Job Offer</button>
+        {% endbuttons %}
+    </form>
+    </div>
+    </div>
+    </section>
+
+
+    {% endblock %}
