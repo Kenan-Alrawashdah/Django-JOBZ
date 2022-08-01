@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+{% load bootstrap4 %}
+{% block content %}
+
+  <form method="post"class="w-50 m-auto">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+   
+    <input type="submit" value="Sign Up" class="btn Post-Job-Offer w-100">
+  </form>
+
+{% endblock %}
