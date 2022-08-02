@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+{% load bootstrap4 %}
+{% block content %}
+
+<div class="container">
+  <div class="list-box">
+  <a href="{% url 'accounts:my_profile'%}" class="font-color-black margin-right">Profile </a> > <a href="#" class="font-color-orange margin-left">Edit</a>
+  </div>
+  <div class="vertical-space-20"></div>
+<div class="job-post-box">
+  <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% bootstrap_form userform %}
+      {% bootstrap_form profileform %}
+      <img src="/media/{{profileform.image.value}}"
+           alt="Avatar" class="img-fluid my-1" style="width: 120px;" />
+      {% buttons %}
+      <button type="submit" class="btn Post-Job-Offer">Save</button>
+      {% endbuttons %}
+  </form>
+  </div>
+</div>
+
+{% endblock %}

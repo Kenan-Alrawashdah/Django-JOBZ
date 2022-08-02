@@ -78,7 +78,7 @@
 <li><a href="index.html">Home variation 1</a></li>
 <li><a href="index2.html">Home variation 2</a></li>
 </ul>
-</li>
+{% comment %} </li>
 <li class="dropdown active ">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Job
 <span class="caret"></span></a>
@@ -86,10 +86,19 @@
 <li><a href="{%url 'jops:jop_list' %}">Job List</a></li>
 <li><a href="job_detail.html">Job Detail</a></li>
 </ul>
-</li>
+</li> {% endcomment %}
 <li><a href="{%url 'jops:jop_list' %}">Jobs</a></li>
 <li><a href="about_us.html">About</a></li>
 <li><a href="contact.html">Contact</a></li>
+<li><a href="{%url 'accounts:my_profile' %}">Profile</a></li>
+{% if user.is_authenticated %}
+<li>{{ user.get_username }}</li>
+<li><a href="">Logout</a></li>
+
+{% else %}
+<li><a href="{%url 'accounts:signup' %}">Sign up</a></li>
+{% endif %}
+
 </ul>
 <div class=" Post-Jobs">
 <a href="{% url 'jops:jop_add' %}" class="">
