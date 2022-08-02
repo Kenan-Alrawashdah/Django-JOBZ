@@ -4,6 +4,7 @@ from django.shortcuts import redirect, render
 from .models import Category, Jop
 from django.core.paginator import Paginator
 from .form import ApplyForm, JopForm
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def get_categories(request):
@@ -26,7 +27,7 @@ def jop_detail(request, id):
      context = {'jop' : jop_detail}
      return render(request, 'jop/job_detail.html', context)
 
-
+@login_required
 def jop_add(request):
 
     if request.method == 'POST':
@@ -43,7 +44,7 @@ def jop_add(request):
     context = {'form': form}
     return render(request, 'jop/jop_add.html', context)     
 
-
+@login_required
 def jop_apply(request, id):
     print('============================================'+id)
     jop = Jop.objects.get(id = id)

@@ -11,10 +11,10 @@
       <p>Your account doesn't have access to this page. To proceed,
       please login with an account that has access.</p>
     {% else %}
-      <p>Please login to see this page.</p>
+    <h3 class="w-50 m-auto pb-4">Please login to see this page.</h3>
     {% endif %}
   {% endif %}
-
+  <h3 class="w-50 m-auto pb-4">LOGIN</h3>
   <form method="post" action="{% url 'login' %}" class="w-50 m-auto">
     {% csrf_token %}
     {% bootstrap_form form %}
@@ -33,6 +33,7 @@
   </form>
 
   {# Assumes you setup the password_reset view in your URLconf #}
-  <p class="w-50 m-auto pt-2"><a href="{% url 'password_reset' %}">Lost password?</a></p>
+  <p class="w-50 m-auto pt-2"><a href="{% url 'accounts:signup' %}">Creat New Account</a></p>
+  {% comment %} <p class="w-50 m-auto pt-2"><a href="{% url 'password_reset' %}">Lost password?</a></p> {% endcomment %}
 
 {% endblock %}

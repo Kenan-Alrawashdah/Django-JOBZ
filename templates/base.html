@@ -90,13 +90,11 @@
 <li><a href="{%url 'jops:jop_list' %}">Jobs</a></li>
 <li><a href="about_us.html">About</a></li>
 <li><a href="contact.html">Contact</a></li>
-<li><a href="{%url 'accounts:my_profile' %}">Profile</a></li>
 {% if user.is_authenticated %}
-<li>{{ user.get_username }}</li>
-<li><a href="">Logout</a></li>
-
+<li><a href="{%url 'accounts:my_profile' %}">Profile</a></li>
+<li><a href="{%url 'logout' %}">Logout</a></li>
 {% else %}
-<li><a href="{%url 'accounts:signup' %}">Sign up</a></li>
+<li><a href="{%url 'login' %}">Login</a></li>
 {% endif %}
 
 </ul>
