@@ -4,6 +4,7 @@ from django.shortcuts import redirect, render
 from .models import Category, Jop
 from django.core.paginator import Paginator
 from .form import ApplyForm, JopForm
+from .filter import JopFilter
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -15,10 +16,12 @@ def get_categories(request):
 def jop_list(request):
     jop_list = Jop.objects.all()
     categories = Category.objects.all()
+    filter_list = JopFilter(request.GET, queryset= jop_list)
+    jop_list = filter_list.qs
     paginator = Paginator(jop_list, 3) # Show 25 contacts per page.
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    context = {'jops': page_obj, 'categories': categories}
+    context = {'jops': page_obj, 'categories': categories, 'filter': filter_list}
     return render(request, 'jop/jop_list.html', context)
 
 

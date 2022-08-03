@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 {% load bootstrap4 %}
 {% block content %}
-
+<h3 class="w-50 m-auto pb-4">Create New Account</h3>
   <form method="post"class="w-50 m-auto">
     {% csrf_token %}
     {% bootstrap_form form %}
