@@ -1,5 +1,6 @@
 from audioop import reverse
 from distutils.log import debug
+from unicodedata import category
 from django.shortcuts import redirect, render
 from .models import Category, Jop
 from django.core.paginator import Paginator
@@ -8,13 +9,17 @@ from .filter import JopFilter
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-def get_categories(request):
-    get_categories = Category.objects.all()
-    context = {'categories': get_categories}
-    return render(request, 'jop/jop_list.html', context)
 
-def jop_list(request):
-    jop_list = Jop.objects.all()
+def index(request):
+    categories = Category.objects.all()
+    context = {'categories':categories}
+    return render(request, 'jop/index.html', context)
+
+
+def jop_list(request, id):
+    categories_id = Category.objects.get(id=id)
+    jop_list = Jop.objects.filter(category=categories_id)
+    #jop_list = Jop.objects.all()
     categories = Category.objects.all()
     filter_list = JopFilter(request.GET, queryset= jop_list)
     jop_list = filter_list.qs
@@ -39,7 +44,7 @@ def jop_add(request):
             myform = form.save(commit=False)
             myform.user = request.user
             myform.save()
-            return redirect('jops:jop_list')
+            return redirect('jops:index')
 
     else:
         form = JopForm()
@@ -57,7 +62,7 @@ def jop_apply(request, id):
             myform = form.save(commit=False)
             myform.jop = jop
             myform.save()
-            return redirect('jops:jop_list')
+            return redirect('jops:jop_list', id= id)
 
     else:
         form = ApplyForm()

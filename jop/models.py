@@ -32,7 +32,7 @@ class Jop(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=55)
-
+    image = models.FileField(upload_to ='category/')
 
     def __str__(self):
        return  self.name   

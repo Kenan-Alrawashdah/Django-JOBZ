@@ -21,3 +21,8 @@ def send_massage(request):
         fail_silently=False,
         )
     return render(request, 'contact/contact.html', {})
+
+
+def about_us(request):
+
+    return render(request, 'contact/about_us.html', {})    

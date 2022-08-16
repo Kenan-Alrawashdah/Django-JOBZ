@@ -72,12 +72,12 @@
 <nav class="main_nav_contaner ml-auto">
 <ul class="main_nav">
 <li class="dropdown ">
-<a class="dropdown-toggle" data-toggle="dropdown" href="#">Home
-<span class="caret"></span></a>
-<ul class="dropdown-menu">
+{% comment %} <a class="dropdown-toggle" data-toggle="dropdown" href="#">Home
+<span class="caret"></span></a> {% endcomment %}
+{% comment %} <ul class="dropdown-menu">
 <li><a href="index.html">Home variation 1</a></li>
 <li><a href="index2.html">Home variation 2</a></li>
-</ul>
+</ul> {% endcomment %}
 {% comment %} </li>
 <li class="dropdown active ">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Job
@@ -87,9 +87,10 @@
 <li><a href="job_detail.html">Job Detail</a></li>
 </ul>
 </li> {% endcomment %}
-<li><a href="{%url 'jops:jop_list' %}">Jobs</a></li>
-<li><a href="about_us.html">About</a></li>
-<li><a href="contact.html">Contact</a></li>
+<li><a href="{%url 'jops:index' %}">Home</a></li>
+<li><a href="{%url 'jops:jop_list' 1 %}">Jobs</a></li>
+<li><a href="{% url 'contact:about_us' %}">About</a></li>
+<li><a href="{% url 'contact:contact'%}">Contact</a></li>
 {% if user.is_authenticated %}
 <li><a href="{%url 'accounts:my_profile' %}">Profile</a></li>
 <li><a href="{%url 'logout' %}">Logout</a></li>
