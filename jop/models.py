@@ -7,6 +7,10 @@ JOP_TYPE = (
    ('Full Time', 'Full Time'),
    ('Part Time', 'Part Time'),
 )
+JOP_Location = (
+   ('On-site', 'On-site'),
+   ('Remote', 'Remote'),
+)
 # Create your models here.
 
 def image_upload(instance, fileName):
@@ -15,6 +19,8 @@ def image_upload(instance, fileName):
 
 class Jop(models.Model):
    user = models.ForeignKey(User, related_name='jop_user', on_delete=models.CASCADE)
+   company = models.CharField(max_length=100)
+   jop_location = models.CharField(max_length=15, choices= JOP_Location)
    title = models.CharField(max_length=100)
    jop_type = models.CharField(max_length=15, choices= JOP_TYPE)
    description = models.TextField(max_length=1000)
