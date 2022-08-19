@@ -4,45 +4,10 @@
 {% load static %}
 
 {% block body %}
-<!-- <section id="intro">
-  <div class="carousel-item active">
-    <div class="carousel-background"><img src="{% static 'imags/slider/slider1.jpg' %}" alt=""></div>
-    <div class="carousel-container">
-      <div class="carousel-content">
-        <h2 class="font-color-white">Find Jobs Now more Easy Way</h2>
-        <p class="font-color-white">Lorem ipsum tempus amet conubia adipiscing fermentum viverra gravida, mollis
-          suspendisse pretium dictumst inceptos mattis euismod lorem nulla, magna duis nostra sodales luctus nulla
-          praesent fermentum a elit mollis purus aenean curabitur eleifend </p>
-        <a href="#" data-toggle="modal" data-target="#myModal"><i class=" material-icons play">play_arrow</i></a>
-      </div>
-    </div>
-  </div>
-</section> -->
-
-<div class="vertical-space-100"></div>
-<!-- <div id="search-box" class="margin-none">
-  <div class="container search-box">
-    <form action="#" id="search-box_search_form_3"
-      class="search-box_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between ">
-      <div class="d-flex flex-row align-items-center justify-content-start inline-block">
-        <span class="large material-icons search">search</span>
-        <input class="search-box_search_input" placeholder="Search Keyword" required="required" type="search">
-        <select class="dropdown_item_select search-box_search_input">
-          {% for cat in categories %}
-            <option>{{cat}}</option>
-           {% endfor %}
-        </select>
-        <span class="large material-icons margin-top search">place</span>
-        <input class="search-box_search_input " placeholder="Location" required="required" type="search">
-      </div>
-      <button type="submit" class="search-box_search_button">Search Jobs</button>
-    </form>
-  </div>
-</div> -->
-
 
 <section id="resent-job-post" class="background-color-white-drak">
-  <div class="vertical-space-85"></div>
+
+  <div class="vertical-space-100"></div>
   <div class="container text-center">
     <h4 class="text-left">Jops</h4>
     <div class="vertical-space-30"></div>
@@ -78,6 +43,10 @@
               <div class="float-right margin-top text-align-center">
                 <a href="#" class="part-full-time">{{jop.jop_type}}</a>
                 <p class="date-time" style="font-size:15px;">Date line: {{jop.published_at|date:'d M o'}}</p>
+              </div>
+              <div class="d-flex justify-content-end mt-4" style="gap: 10px;">
+                <a href="{% url 'jops:jop_edit' jop.id %}" class="">Edit</a>
+                <a href="{% url 'jops:job_delete' jop.id %}" class="">Delete</a>
               </div>
             </div>
           </div>

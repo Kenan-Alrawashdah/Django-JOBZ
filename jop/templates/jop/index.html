@@ -7,14 +7,14 @@
     <div class="carousel-container">
     <div class="carousel-content">
      <h2 class="font-color-white">Find Jobs Now more Easy Way</h2>
-    <p class="font-color-white">Lorem ipsum tempus amet conubia adipiscing fermentum viverra gravida, mollis suspendisse pretium dictumst inceptos mattis euismod lorem nulla, magna duis nostra sodales luctus nulla praesent fermentum a elit mollis purus aenean curabitur eleifend </p>
+    <p class="font-color-white">JOBZ is a platform that facilitates employers and job seekers to find each other online. Where any job can be published and the searcher for this job can find it easily</p>
     <a href="#" data-toggle="modal" data-target="#myModal"><i class=" material-icons play">play_arrow</i></a>
     </div>
     </div>
     </div>
     </section>
     
-    
+<!--     
     <div id="search-box">
     <div class="container search-box">
     <form action="#" id="search-box_search_form_3" class="search-box_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between ">
@@ -33,13 +33,14 @@
     </form>
     </div>
     </div>
-    
-    
+     -->
+     <div class="vertical-space-60"> </div>
+
     <section id="Job-Category">
     <div class="container">
     <h3 class="text-center">Choose Job Category</h3>
     <div class="vertical-space-30"></div>
-    <p class="max-width">Lorem ipsum tempus amet conubia adipiscing fermentum viverra gravida, mollis suspendisse pretium dictumst inceptos mattis euismod
+    <p class="max-width">These categories are considered job classification
     </p>
     <div class="vertical-space-60"> </div>
     <div class="row">
@@ -50,13 +51,13 @@
     <img src="/media/{{category.image}}" alt="">
     </div>
     <h6>{{category.name}}</h6>
-    <a href="{%url 'jops:jop_list' category.id %}" class="button job_post" data-hover="View Jobs" data-active="I'M ACTIVE"><span>36 Job Posts</span></a>
+    <a href="{%url 'jops:jop_list' category.id %}" class="button job_post" data-hover="View Jobs" data-active="I'M ACTIVE"><span>Job Posts</span></a>
     </div>
     </div>
     {% endfor %}
     </div>
-    <div class="vertical-space-40"></div>
-    <a href="#" class="Brows-All-Category">Brows All Category</a>
+    {% comment %} <div class="vertical-space-40"></div> {% endcomment %}
+    {% comment %} <a href="#" class="Brows-All-Category">Brows All Category</a> {% endcomment %}
     </div>
     <div class="vertical-space-85"></div>
     </section>
@@ -67,107 +68,36 @@
     <div class="container text-center">
     <h3 class="text-center">Recent Job Post</h3>
     <div class="vertical-space-30"></div>
-    <p class="max-width">Lorem ipsum tempus amet conubia adipiscing fermentum viverra gravida, mollis suspendisse pretium dictumst inceptos mattis euismod
+    <p class="max-width">These are the most recent jobs ever
     </p>
     <div class="vertical-space-60"></div>
-    <div class="detail">
-    <div class="media display-inline text-align-center">
-    <img src="{% static 'imags/job-post-icone-1.png' %}" alt="John Doe" class="mr-3 ">
-    <div class="media-body text-left  text-align-center">
-    <h6>Jopitar looking for a senior UX Designer</h6>
-    <i class="large material-icons">account_balance</i>
-    <span class="text">Jopitar inc.</span>
-    <br />
-    <i class="large material-icons">place</i>
-    <span class="text font-size">11907 Doyle Cape Cydneyview</span>
-    <div class="float-right margin-top text-align-center">
-    <a href="#" class="part-full-time">Part Time</a>
-    <p class="date-time">Deadline: May 23, 2018</p>
+    {% for job in jobs %}
+    <div class="detail width-100 ">
+      <div class="media display-inline text-align-center">
+        <img src="/media/{{job.image}}" width=200 height="150" alt="John Doe" class="mr-3 ">
+        <div class="media-body text-left  text-align-center">
+          <h6><a href="{% url 'jops:jop_detail' job.id %}" class="font-color-black">{{job}}</a></h6>
+          <i class="large material-icons">account_balance</i>
+          <span class="text">{{job.company}}</span>
+          <br/>
+          <i class="large material-icons">place</i>
+          <span class="text font-size">( {{job.jop_location}} )</span>
+          <br />
+          <span class="text font-size">Category: {{job.category}}</span>
+          <br/>
+          <span class="text font-size">Experienc: {{job.experienc}} Year</span>
+          <div class="float-right margin-top text-align-center">
+            <a href="" class="part-full-time">{{job.jop_type}}</a>
+            <p class="date-time" style="font-size:15px;">Date line: {{job.published_at|date:'d M o'}}</p>
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
-    </div>
-    </div>
-    <div class="detail">
-    <div class="media display-inline text-align-center">
-    <img src="{% static 'imags/job-post-icone-2.png ' %}" alt="John Doe" class="mr-3 ">
-    <div class="media-body text-left text-align-center">
-    <h6>Rokital needs Marketing Experts</h6>
-    <i class="large material-icons">account_balance</i>
-    <span class="text">Rokitar ltd.</span>
-    <br />
-    <i class="large material-icons">place</i>
-    <span class="text font-size">11907 Doyle Cape Cydneyview</span>
-    <div class="float-right margin-top text-align-center">
-    <a href="#" class="part-full-time">Full Time</a>
-    <p class="date-time">Deadline: May 23, 2018</p>
-    </div>
-    </div>
-    </div>
-    </div>
-    <div class="detail">
-    <div class="media display-inline text-align-center">
-    <img src="{% static 'imags/job-post-icone-3.png' %}" alt="John Doe" class="mr-3 ">
-    <div class="media-body text-left text-align-center">
-    <h6>Mshape looking for a senior UX Designer</h6>
-    <i class="large material-icons">account_balance</i>
-    <span class="text">Mshape inc.</span>
-    <br />
-    <i class="large material-icons">place</i>
-    <span class="text font-size">11907 Doyle Cape Cydneyview</span>
-    <div class="float-right margin-top text-align-center">
-    <a href="#" class="part-full-time">Full Time</a>
-    <p class="date-time">Deadline: May 23, 2018</p>
-    </div>
-    </div>
-    </div>
-    </div>
-    <div class="detail">
-    <div class="media display-inline text-align-center">
-    <img src="{% static 'imags/job-post-icone-4.png' %}" alt="John Doe" class="mr-3 ">
-    <div class="media-body text-left text-align-center">
-    <h6>Marketing Directer needed</h6>
-    <i class="large material-icons">account_balance</i>
-    <span class="text">Scalegoss ltd.</span>
-    <br />
-    <i class="large material-icons">place</i>
-    <span class="text font-size">11907 Doyle Cape Cydneyview</span>
-    <div class="float-right margin-top text-align-center">
-    <a href="#" class="part-full-time">Part Time</a>
-    <p class="date-time">Deadline: May 23, 2018</p>
-    </div>
-    </div>
-    </div>
-    </div>
-    <div class="detail">
-    <div class="media display-inline text-align-center">
-    <img src="imags/job-post-icone-5.png" alt="John Doe" class="mr-3 ">
-    <div class="media-body text-left text-align-center">
-    <h6>We need a senior Brand Designer</h6>
-    <i class="large material-icons">account_balance</i>
-    <span class="text">Supwin inc.</span>
-    <br />
-    <i class="large material-icons">place</i>
-    <span class="text font-size">11907 Doyle Cape Cydneyview</span>
-    <div class="float-right margin-top text-align-center">
-    <a href="#" class="part-full-time">Freelance</a>
-    <p class="date-time">Deadline: May 23, 2018</p>
-    </div>
-    </div>
-    </div>
-    </div>
+    {% endfor %}
     <div class="vertical-space-20"></div>
     <div class="job-list">
-    <a href="#" class="Open-Jobs-Page margin-auto">Open Jobs Page<i class="large material-icons float-right">trending_flat</i></a>
-    <ul class="pagination justify-content-end margin-auto">
-    <li class="page-item"><a class="page-link pdding-none" href="javascript:void(0);"><i class=" material-icons keyboard_arrow_left_right">keyboard_arrow_left</i></a></li>
-    <li class="page-item"><a class="page-link active" href="javascript:void(0);">1</a></li>
-    <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-    <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
-    <li class="page-item"><a class="page-link" href="javascript:void(0);">4</a></li>
-    <li class="page-item">
-    <a class="page-link pdding-none" href="javascript:void(0);"> <i class=" material-icons keyboard_arrow_left_right">keyboard_arrow_right</i></a>
-    </li>
-    </ul>
+    <a href="{%url 'jops:jop_list' 0 %}" class="Open-Jobs-Page margin-auto">Open Jobs Page<i class="large material-icons float-right">trending_flat</i></a>
+  
     </div>
     </div>
     <div class="vertical-space-60"></div>
@@ -387,9 +317,7 @@
     <li class="list-item1 ">Vitae sociosqu a nisi cubilia vulputate aliquam vulputate imperdiet tempor arcu fames</li>
     <li class="list-item1 ">Odio habitasse senectus morbi dapibus mauris non primis, nisl ante hendrerit consectetur nulla phasellus eleifend, ad at scelerisque vulputate habitant tempor</li>
     </ul>
-    <div class="vertical-space-30"></div>
-    <a href="#" class="Explore-Employee">Explore Employee</a>
-    <a href="#" class="Explore-New-Jobs">Explore New Jobs</a>
+  
     </div>
     <div class="col-lg-3 col-md-6">
     <img src="imags/man.png" alt="" class="man-img">
@@ -399,63 +327,6 @@
     </div>
     </section>
     
-    
-    <section id="Clients-Testimonial">
-    <div class="vertical-space-85"></div>
-    <div class="container">
-    <h3 class="text-center">Recent Job Post</h3>
-    <div class="vertical-space-30"></div>
-    <p class="max-width">Lorem ipsum tempus amet conubia adipiscing fermentum viverra gravida, mollis suspendisse pretium dictumst inceptos mattis euismod
-    </p>
-    <div class="vertical-space-60"></div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-    <div class="owl-carousel Clients-Testimonial-carousel">
-    <div class="Clients-Testimonial-item">
-    <div class="testimonial">
-    <h3 class="testimonial-title">Farhana Islam</h3>
-    <i class="material-icons star">star</i>
-    <i class="material-icons star">star</i>
-    <i class="material-icons star">star</i>
-    <i class="material-icons star">star</i>
-    <i class="material-icons star">star</i>
-    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vehicula turpis non est imperdiet, et facilisis nisl tempus. Donec nec. </p>
-    <div class="pic">
-    <img src="imags/Clients-Testimonial1.jpg" alt="">
-    </div>
-    </div>
-    </div>
-    <div class="Clients-Testimonial-item">
-    <div class="testimonial">
-    <h3 class="testimonial-title">Williamson</h3>
-    <i class="material-icons star">star</i>
-    <i class="material-icons star">star</i>
-    <i class="material-icons star">star</i>
-    <i class="material-icons star">star</i>
-    <i class="material-icons star">star</i>
-    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vehicula turpis non est imperdiet, et facilisis nisl tempus. Donec nec. </p>
-    <div class="pic">
-    <img src="imags/Clients-Testimonial3.jpg" alt="">
-    </div>
-    </div>
-    </div>
-    <div class="Clients-Testimonial-item">
-    <div class="testimonial">
-    <h3 class="testimonial-title">Williamson</h3>
-    <i class="material-icons star">star</i>
-    <i class="material-icons star">star</i>
-    <i class="material-icons star">star</i>
-    <i class="material-icons star">star</i>
-    <i class="material-icons star">star</i>
-    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vehicula turpis non est imperdiet, et facilisis nisl tempus. Donec nec. </p>
-    <div class="pic"> 
-    <img src="imags/Clients-Testimonial2.jpg" alt="">
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    <div class="vertical-space-85"></div>
-    </div>
-    </section>
+
 
     {% endblock %}
