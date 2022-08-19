@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% load static %}
+
+{% block body %}
+<section id="post_job">
+    <div class="vertical-space-100"></div>
+    <div class="vertical-space-101"></div>
+    <div class="container">
+    <div class="list-box">
+    <a href="{%url 'jops:my_job' %}" class="font-color-black margin-right">Job </a> > <a href="#" class="font-color-orange margin-left"> Delete</a>
+    </div>
+    
+    <div class="vertical-space-60"></div>
+    <h2 style="color: red;">Are you sure to delete this job</h2>
+    <div class="job-post-box">
+        <div class="detail width-100 ">
+            <div class="media display-inline text-align-center">
+              <img src="/media/{{jop.image}}" width=200 height="150" alt="John Doe" class="mr-3 ">
+              <div class="media-body text-left  text-align-center">
+                <h6><a href="{% url 'jops:jop_detail' jop.id %}" class="font-color-black">{{jop}}</a></h6>
+                <div class="vertical-space-20"></div>
+                <span class="text">Jopitar inc.</span>
+                <div class="vertical-space-20"></div>
+                <span class="text font-size">11907 Doyle Cape Cydneyview</span>
+                <div class="float-right margin-top text-align-center">
+                  {% comment %} <a href="#" class="part-full-time">{{jop.jop_type}}</a> {% endcomment %}
+                  <p class="date-time" style="font-size:15px;">Date line: {{jop.published_at|date:'d M o'}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="vertical-space-30"></div>
+        <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+       
+        {% buttons %}
+        <button type="submit" class="btn btn-danger">Delete Job </button>
+        {% endbuttons %}
+    </form>
+    </div>
+    </div>
+    </section>
+
+
+    {% endblock %}
