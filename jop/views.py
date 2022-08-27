@@ -75,7 +75,7 @@ def jop_apply(request, id):
     return render(request, 'jop/jop_apply.html', context)         
 
 
-
+@login_required
 def my_job(request):
     user = request.user
     jop_list = Jop.objects.filter(user=user)
